@@ -30,7 +30,9 @@ class AddNoteSheet extends StatelessWidget {
               hint: "Content",
             ),
             SizedBox(height: 36),
-            CustomAddNoteButton(),
+            CustomAddNoteButton(
+              toDoText: "Add Note",
+            ),
           ],
         ),
       ),
