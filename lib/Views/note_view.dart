@@ -12,7 +12,6 @@ class HomeView extends StatelessWidget {
         child: NotesViewBody(),
       ),
       floatingActionButton: CustomFloatingLocationButton(),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
 }
