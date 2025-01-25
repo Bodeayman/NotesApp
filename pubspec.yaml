@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   hive : any
+  hive_flutter : any
   google_fonts : any
   font_awesome_flutter : any
 
@@ -17,6 +18,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  build_runner : any
+  hive_generator : any
 
 flutter:
   uses-material-design: true
