@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/Views/Widgets/custom_add_note_button.dart';
 import 'package:to_do_list/Views/Widgets/custom_text_field.dart';
+import 'package:to_do_list/constant.dart';
 
 class AddNoteSheet extends StatelessWidget {
   const AddNoteSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(),
-      child: const Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 16,
-        ),
+    return const Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 16,
+      ),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
@@ -28,6 +29,8 @@ class AddNoteSheet extends StatelessWidget {
               textLines: 5,
               hint: "Content",
             ),
+            SizedBox(height: 36),
+            CustomAddNoteButton(),
           ],
         ),
       ),
