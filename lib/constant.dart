@@ -1,2 +1,3 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+Color Kprimarycolor = const Color(0xff62fcd7);
