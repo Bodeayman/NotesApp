@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:to_do_list/Views/note_view.dart';
+import 'package:to_do_list/constant.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(kboxName);
+  runApp(
+    const MainApp(),
+  );
 }
 
 class MainApp extends StatelessWidget {
