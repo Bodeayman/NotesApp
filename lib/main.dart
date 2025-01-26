@@ -11,7 +11,7 @@ import 'package:to_do_list/simple_bloc_observer.dart';
 void main() async {
   await Hive.initFlutter();
   Bloc.observer = SimpleBlocObserver();
-  await Hive.openBox(
+  await Hive.openBox<NoteModel>(
     kboxName,
   );
   Hive.registerAdapter(
