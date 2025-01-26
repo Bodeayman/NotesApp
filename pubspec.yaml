@@ -13,6 +13,8 @@ dependencies:
   hive_flutter : any
   google_fonts : any
   font_awesome_flutter : any
+  flutter_bloc : any
+  
 
 dev_dependencies:
   flutter_test:

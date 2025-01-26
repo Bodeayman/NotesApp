@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:to_do_list/Models/note_model.dart';
 import 'package:to_do_list/Views/note_view.dart';
 import 'package:to_do_list/constant.dart';
 
 void main() async {
   await Hive.initFlutter();
-  await Hive.openBox(kboxName);
+  await Hive.openBox(
+    kboxName,
+  );
+  Hive.registerAdapter(
+    NoteModelAdapter(),
+  );
   runApp(
     const MainApp(),
   );
