@@ -31,8 +31,19 @@ class _AddNoteSheetState extends State<AddNoteSheet> {
             }
           },
           builder: (context, state) {
-            return const SingleChildScrollView(
-              child: AddNoteForm(),
+            // If you seen here that i put a listner to just listen to the changes but doesn't rebuild
+            // but the rebuilding happens in the button as BlocBuilder so you don't need to rebuild the whole ui
+            return AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true : false,
+              child: const Padding(
+                padding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                ),
+                child: SingleChildScrollView(
+                  child: AddNoteForm(),
+                ),
+              ),
             );
           },
         ),
