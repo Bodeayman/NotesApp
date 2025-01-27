@@ -11,12 +11,13 @@ import 'package:to_do_list/simple_bloc_observer.dart';
 void main() async {
   await Hive.initFlutter();
   Bloc.observer = SimpleBlocObserver();
-  await Hive.openBox<NoteModel>(
-    kboxName,
-  );
   Hive.registerAdapter(
     NoteModelAdapter(),
   );
+  await Hive.openBox<NoteModel>(
+    kboxName,
+  );
+
   runApp(
     const MainApp(),
   );
@@ -27,22 +28,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AddNoteCubit(),
+    return MaterialApp(
+      theme: ThemeData(
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme,
         ),
-      ],
-      child: MaterialApp(
-        theme: ThemeData(
-          textTheme: GoogleFonts.poppinsTextTheme(
-            Theme.of(context).textTheme,
-          ),
-          brightness: Brightness.dark,
-        ),
-        debugShowCheckedModeBanner: false,
-        home: const HomeView(),
+        brightness: Brightness.dark,
       ),
+      debugShowCheckedModeBanner: false,
+      home: const HomeView(),
     );
   }
 }
