@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:to_do_list/Cubits/Notes_Cubit/notes_cubit_cubit.dart';
+import 'package:to_do_list/Models/note_model.dart';
 import 'package:to_do_list/Views/edit_notes_view.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem(
-      {super.key,
-      required this.title,
-      required this.subTitle,
-      required this.date});
-  final String title;
-  final String subTitle;
-  final String date;
+  const NoteItem({super.key, required this.note});
 
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +25,7 @@ class NoteItem extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: const Color(0xffffcc80),
+            color: Color(note.color),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Padding(
@@ -41,9 +38,9 @@ class NoteItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 ListTile(
-                  title: const Text(
-                    "Flutter Tips",
-                    style: TextStyle(
+                  title: Text(
+                    note.title,
+                    style: const TextStyle(
                       fontSize: 26,
                       color: Colors.black,
                     ),
@@ -54,7 +51,7 @@ class NoteItem extends StatelessWidget {
                       bottom: 16,
                     ),
                     child: Text(
-                      "Build your career with Tharwat Samy",
+                      note.subTitle,
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.5),
                         fontSize: 18,
@@ -62,7 +59,10 @@ class NoteItem extends StatelessWidget {
                     ),
                   ),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      note.delete();
+                      BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                    },
                     icon: const Icon(
                       FontAwesomeIcons.trash,
                       // Icons.delete,
@@ -71,15 +71,15 @@ class NoteItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Opacity(
+                Opacity(
                   opacity: 0.4,
                   child: Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       right: 24,
                     ),
                     child: Text(
-                      "2023-15-2",
-                      style: TextStyle(
+                      note.date,
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.black,
                       ),
